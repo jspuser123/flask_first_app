@@ -11,7 +11,7 @@ open new terminal
 
 #insert command:
 
-################################################################
+*************************
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force                         ====# cmd not use only powershell
 
 pip install virtualenv
@@ -36,4 +36,4 @@ flask --app f1.py run --debug
 
 flask --app f1.py run
 
-#############################################
+********
