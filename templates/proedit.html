@@ -1,0 +1,25 @@
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+<body>
+<form action="/proupdate" method="post">
+    
+
+    <div class="container">
+      <label ><b>product</b></label>
+      <input type="text"name="product_id" id="product" value="{{user[0]}}">
+  
+      <label ><b>product_item</b></label>
+      <input type="text" placeholder="Enter the product" name="product" id="product" value="{{user[1]}}">
+
+     
+  
+      <button  type="submit" value="edit" class="btn2"> edit</button>
+    
+    </div>
+   
+   
+  </form> 
+</body>

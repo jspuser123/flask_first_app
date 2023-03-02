@@ -1,0 +1,142 @@
+
+
+  .container
+
+  {
+    
+    height: 450px;
+    width: 350px;
+    background-color: #4112e9;
+    padding: 16px;
+    margin-left: 40%;
+    margin-top: 10%;
+    
+    position: relative;
+
+  }
+
+
+.con
+
+  {
+    float: left;
+    height: 250px;
+    width: 450px;
+    background-color: #4112e9;
+    padding: 16px;
+    margin-left: 30%;
+    margin-top: 10%;
+    position: relative;
+
+  }
+
+body
+{
+  background-color: #5d12e9;
+}
+
+
+  .frm
+  {
+    height: 150px;
+    width: 150px;
+    margin-left: 30%;
+    margin-top: 8%;
+    
+    
+  }
+
+.btn
+  {
+    width: 150px;
+    background-color: #b0e912;
+    
+    height: 50px;
+    
+    border-radius: 30px;
+   
+    margin-top: 5%;
+  }
+
+  .btn1
+  {
+    width: 90px;
+    background-color: #12e96c;
+    
+    height: 30px;
+    border-radius: 30px;
+    
+    
+  }
+
+
+  .btn2
+  {
+    width: 150px;
+    background-color: #e91288;
+    
+    height: 30px;
+    border-radius: 30px;
+    margin-top: 5%;
+    
+  }
+
+
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+
+
+  thead
+  {
+    background-color: rgb(220, 20, 137);
+    
+  }
+
+
+.markline
+{
+color: red;
+
+}
+
+input
+{
+  color: red;
+  width: 100%;
+  padding: 10px;
+}
+
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+   
+}
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+    
+}
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  body {
+    background-color: rgb(128, 0, 70);
+  }
+
+ 
+}
+

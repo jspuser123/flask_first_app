@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+       
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+
+  <h1><mark class="markline">ESS</mark>DEE Website</h1>
+
+
+
+  
+
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>page</th>
+        <th>movement_id</th>
+        <th>date</th>
+        <th>from_location</th>
+        <th>to_location</th>
+        <th>product_id</th>
+        <th>qty</th>
+        <th>action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+     
+      {% for user in x %}
+        <tr>
+          <td>{{ loop.index + pagination.skip }}</td>
+          <td>{{user[0]}}</td>
+          <td>{{user[1]}}</td>
+          <td>{{user[2]}}</td>
+          <td>{{user[3]}}</td>
+          <td>{{user[4]}}</td>
+          <td>{{user[5]}}</td>
+          
+          <td>
+         
+          <form action="{{ url_for('editable', id=user[0]) }}" method='post'><button  type="submit" value="edit" class="btn1"> edit</button></form>
+          </td>
+          
+         
+          
+         
+        </tr>
+     
+      {% endfor %}
+      <form action="/addtable">
+        <button type="submit" class="fa fa-plus" style="font-size:20px;background-color:blue;border-radius: 30px;width: 150px; height: 40px;float: right;"> add </button>
+        </form>
+       
+          
+
+
+    </tbody>
+  </table>
+  {{ pagination.links }}
+  {{ pagination.info }}
+  {% endblock %}
+  
+
+</body>
+</html>

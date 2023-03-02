@@ -1,0 +1,36 @@
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body >
+<form action="/addtable" method="post">
+    
+  
+    <div class="container">
+      <label ><b>movement_id</b></label>
+      <input type="text" placeholder="movement_id" name="movement_id" id="movement_id" >
+  
+      <label ><b>date</b></label>
+      <input type="date" placeholder="Enter the date" name="date" id="date">
+
+      <label ><b>from_location</b></label>
+      <input type="text" placeholder="from_location" name="from_location" id="from_location">
+
+      <label ><b>to_location</b></label>
+      <input type="text" placeholder="to_location" name="to_location" id="to_location">
+      
+
+
+      <label ><b>product_id</b></label>
+      <input type="text" placeholder="product_id" name="product_id">
+
+      <label ><b>qty</b></label>
+      <input type="text" placeholder="qty" name="qty">
+  
+      <button  type="submit" value="edit" class="btn2"> add</button>
+    
+    </div>
+    </div>
+  </form> 
+
+</body>

@@ -1,0 +1,24 @@
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+<form action="/locupdate" method="post">
+    
+
+    <div class="container">
+      <label ><b>location_id</b></label>
+      <input type="text"name="loction_id" id="loction_id" value="{{user[0]}}">
+  
+      <label ><b>address</b></label>
+      <input type="text" placeholder="Enter the address" name="address" id="address" value="{{user[1]}}">
+
+     
+  
+      <button  type="submit" value="edit" class="btn2"> edit</button>
+    
+    </div>
+    </div>
+   
+  </form> 
+</body>
