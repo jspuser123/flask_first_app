@@ -4,7 +4,7 @@
 
   {
     
-    height: 450px;
+    height: 480px;
     width: 350px;
     background-color: #4112e9;
     padding: 16px;
@@ -15,6 +15,10 @@
 
   }
 
+
+form{
+color: #d012e9;
+}
 
 .con
 
@@ -140,3 +144,8 @@ input
  
 }
 
+*:disabled {
+  background-color: dimgrey;
+  color: linen;
+  opacity: 1;
+}

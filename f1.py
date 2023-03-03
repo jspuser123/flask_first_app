@@ -6,6 +6,30 @@ from flask_paginate import Pagination, get_page_parameter
 app = Flask(__name__)
 mod = Blueprint('users', __name__)
 
+
+
+@app.route('/nodata')
+
+def nodata():
+  
+      
+
+    return render_template('noproduct.html')
+
+
+@app.route('/nodataloc')
+def nolocdata():
+    return render_template('noloction.html')
+
+@app.route('/nomove')
+def nomove():
+    return render_template('nomovinid.html')
+
+
+
+
+
+
 @app.route('/' ,methods = ['POST', 'GET'])
 def homepage():
     if request.method == 'POST':
@@ -18,6 +42,7 @@ def homepage():
         elif request.form.get('action3') == 'VALUE3':
 
             return redirect('product')
+    
         
         
 
@@ -25,6 +50,7 @@ def homepage():
             print("not vlue data")
     
     return render_template('home.html')
+
 
 
 
@@ -55,28 +81,35 @@ def view():
 @app.route('/addtable', methods = ['POST', 'GET'])
 def add():
     if request.method == 'POST':
-        x1=request.form.get('movement_id')
+        
         x2=request.form.get('date')
         x3=request.form.get('from_location')
         x4=request.form.get('to_location')
         x5=request.form.get('product_id')
-        x6=request.form.get('qty')
+        x6=request.form.get('product')
+        x7=request.form.get('qty')
+
+        if x2 and x3 and x4 and x5 and x6 and x7:
 
 
 
-        con = sqlite3.connect('main.db')
-        cur = con.cursor()
+            con = sqlite3.connect('main.db')
+            cur = con.cursor()
 
-        tbl= """insert into  ProductMovement(​movement_id,date,from_location,​to_location,product_id,qty) values (?,?,?,?,?,?);"""
-    
-        sql=(x1,x2,x3,x4,x5,x6)
-        cur.execute(tbl,sql)
-    
-            
-        con.commit()
-        con.close()
-        print("insert data sucesfully")
+            tbl= """insert into  ProductMovement(date,from_location,to_location,product_id,product,'\u200bQty') values (?,?,?,?,?,?);"""
         
+            sql=(x2,x3,x4,x5,x6,x7)
+            cur.execute(tbl,sql)
+        
+                
+            con.commit()
+            con.close()
+            print("insert data sucesfully")
+
+        else:
+            print("not value product1")
+            return redirect('nomove')
+            
   
     return render_template('add.html')
 @app.route('/locatin')
@@ -104,28 +137,32 @@ def loc():
 def addloc():
     if request.method == 'POST':
      
-        x1=request.form.get('location_id')
+        
         x2=request.form.get('address')
 
-        print(x1)
-        print(x2)
-        con = sqlite3.connect('main.db')
-        cur = con.cursor()
-        sql=(x1,x2)
+        if x2:
 
-       
-    
-        
-        tbl= """insert into  Location(loction_id,address) values (?,?);"""
-        cur.execute(tbl,sql)
-    
+            print(x2)
+            con = sqlite3.connect('main.db')
+            cur = con.cursor()
             
-        con.commit()
-        con.close()
-        print("insert data sucesfully")
+
+            
+            cur.execute('insert into  Location(address) values (?)',(x2,))
+                
+            con.commit()
+            con.close()
+            print("insert data sucesfully")
+
+        else:
+            print("not value product1")
+            return redirect('nodataloc')
         
 
     return render_template('addloc.html')
+
+
+
 
 
 
@@ -145,34 +182,38 @@ def product():
         
     con.commit()
     con.close()
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, total=50, record_name='users')
-    return render_template('product.html',x1=x1,pagination=pagination)
+  
+    return render_template('product.html',x1=x1)
 
 @app.route('/locprotable', methods = ['POST', 'GET'])
 def addpro():
     if request.method == 'POST':
      
-        x1=request.form.get('product_id')
+       
 
         x2=request.form.get('produc')
 
-        print(x1,x2)
+        if x2:
 
-        con = sqlite3.connect('main.db')
-        cur = con.cursor()
-        sql=(x1,x2)
+           
 
-        tbl= """insert into  product(product_id,product) values (?,?);"""
-        
-        
-        cur.execute(tbl,sql)
-    
+            con = sqlite3.connect('main.db')
+            cur = con.cursor()
+           
+
             
-        con.commit()
-        con.close()
-        print("insert data sucesfully")
-  
+            
+            
+            cur.execute('insert into  product(product) values (?)',(x2,))
+        
+                
+            con.commit()
+            con.close()
+            print("insert data sucesfully")
+        else:
+            print("not value product1")
+            return redirect('nodata')
+
 
     return render_template('addpro.html')
 
@@ -203,21 +244,23 @@ def editable(id):
 @app.route("/update",methods=["POST","GET"])
 def update():
     if request.method == 'POST':
-        y1=request.form.get('movement_id')
+        
+        y1=request.form.get('id')
         y2=request.form.get('date')
         y3=request.form.get('from_location')
         y4=request.form.get('to_location')
         y5=request.form.get('product_id')
-        y6=request.form.get('qty')
+        y6=request.form.get('product')
+        y7=request.form.get('qty')
 
-        print(y1,y2,y3,y4,y5,y6)
+        print(y1 +"this is id value")
 
         con = sqlite3.connect('main.db')
         cur = con.cursor()
 
         # tbl= """insert into  ProductMovement(​movement_id,date,from_location,​to_location,product_id,qty) values (?,?,?,?,?,?);"""
-        tbl = """ UPDATE ProductMovement SET ​movement_id=?,date=?,from_location=?,​to_location=?,product_id=?,qty=? WHERE ​movement_id=?;"""
-        sql=(y1,y2,y3,y4,y5,y6,y1)
+        tbl = """ UPDATE ProductMovement SET date=?,from_location=?,To_location=?,product_id=?,product=?,\u200bQty=? WHERE ​movement_id=?;"""
+        sql=(y2,y3,y4,y5,y6,y7,y1)
         cur.execute(tbl,sql)
 
             
@@ -263,8 +306,8 @@ def locupdate():
         cur = con.cursor()
 
         # tbl= """insert into  ProductMovement(​movement_id,date,from_location,​to_location,product_id,qty) values (?,?,?,?,?,?);"""
-        tbl = """ UPDATE Location SET loction_id=?,address=? WHERE loction_id=?;"""
-        sql=(y1,y2,y1)
+        tbl = """ UPDATE Location SET address=? WHERE loction_id=?;"""
+        sql=(y2,y1)
         cur.execute(tbl,sql)
 
             
@@ -311,8 +354,8 @@ def proupdate():
         cur = con.cursor()
 
         # tbl= """insert into  ProductMovement(​movement_id,date,from_location,​to_location,product_id,qty) values (?,?,?,?,?,?);"""
-        tbl = """ UPDATE product SET product_id=?,product=? WHERE product_id=?;"""
-        sql=(y1,y2,y1)
+        tbl = """ UPDATE product SET product=? WHERE product_id=?;"""
+        sql=(y2,y1)
         cur.execute(tbl,sql)
 
             

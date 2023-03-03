@@ -1,15 +1,17 @@
 
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
+ 
 <form action="/proupdate" method="post">
     
 
     <div class="container">
       <label ><b>product</b></label>
-      <input type="text"name="product_id" id="product" value="{{user[0]}}">
+      <input type="text"name="product_id" id="product" value="{{user[0]}}" readonly="readonly">
   
       <label ><b>product_item</b></label>
       <input type="text" placeholder="Enter the product" name="product" id="product" value="{{user[1]}}">
@@ -22,4 +24,7 @@
    
    
   </form> 
+  <form action="/" method='post'>
+    <button type="submit" class="fa fa-home" style="font-size:20px;background-color:rgb(0, 132, 255);border-radius: 30px;height:40px;width: 100px;margin-left: 54%;">home</button>
+    </form>
 </body>

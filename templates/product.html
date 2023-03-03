@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
+
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
       
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+        
     </head>
 <body>
 <h1><mark class="markline">ESS</mark>DEE Website</h1>
+<form action="/" method='post'>
+  <button type="submit" class="fa fa-home" style="font-size:20px;background-color:red;border-radius: 30px;width: 70px; height: 40px;float: left;"></button>
+  </form>
 {% block content %}
   <table id="data" class="table table-striped">
     <thead>
@@ -51,8 +57,7 @@
 
     
   </table>
-{{ pagination.links }}
-{{ pagination.info }}
+
 {% endblock %}
 </body>
 </html>

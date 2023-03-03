@@ -16,9 +16,9 @@
 
   <h1><mark class="markline">ESS</mark>DEE Website</h1>
 
-
-
-  
+  <form action="/" method='post'>
+  <button type="submit" class="fa fa-home" style="font-size:20px;background-color:red;border-radius: 30px;width: 70px; height: 40px;float: left;"></button>
+  </form>
 
 
 {% block content %}
@@ -31,6 +31,7 @@
         <th>from_location</th>
         <th>to_location</th>
         <th>product_id</th>
+        <th>product</th>
         <th>qty</th>
         <th>action</th>
       </tr>
@@ -47,6 +48,7 @@
           <td>{{user[3]}}</td>
           <td>{{user[4]}}</td>
           <td>{{user[5]}}</td>
+          <td>{{user[6]}}</td>
           
           <td>
          
@@ -57,10 +59,12 @@
           
          
         </tr>
-     
+        
       {% endfor %}
       <form action="/addtable">
+        
         <button type="submit" class="fa fa-plus" style="font-size:20px;background-color:blue;border-radius: 30px;width: 150px; height: 40px;float: right;"> add </button>
+        
         </form>
        
           
@@ -68,6 +72,7 @@
 
     </tbody>
   </table>
+  
   {{ pagination.links }}
   {{ pagination.info }}
   {% endblock %}
