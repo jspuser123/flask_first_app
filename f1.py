@@ -1,29 +1,16 @@
-from flask import Flask, render_template,redirect,request
+from flask import Flask, render_template,redirect,request,flash
 import sqlite3
-from flask import Blueprint
-from flask_paginate import Pagination, get_page_parameter
+
+from flask_paginate import Pagination, get_page_parameter,get_page_args
 
 app = Flask(__name__)
-mod = Blueprint('users', __name__)
+
+app.secret_key = 'super secret key'
 
 
 
-@app.route('/nodata')
-
-def nodata():
-  
-      
-
-    return render_template('noproduct.html')
 
 
-@app.route('/nodataloc')
-def nolocdata():
-    return render_template('noloction.html')
-
-@app.route('/nomove')
-def nomove():
-    return render_template('nomovinid.html')
 
 
 
@@ -50,6 +37,68 @@ def homepage():
             print("not vlue data")
     
     return render_template('home.html')
+
+
+
+
+
+
+
+@app.route('/temp1')
+def temp():
+
+    search = False
+    q = request.args.get('q')
+    if q:
+        search = True
+    
+   
+    
+                                          
+    
+
+    con = sqlite3.connect('main.db')
+    cur = con.cursor()
+
+    #tbl= """insert TABLE  ProductMovement(​movement_id,date,from_location,​to_location,product_id, ​qty);"""
+    tbl="select * from Location"
+
+    cur.execute(tbl)
+    users =cur.fetchall()
+
+
+    
+        
+    con.commit()
+    con.close()
+    total = len(users)
+    page = request.args.get(get_page_parameter(), type=int, default=1)
+    pagination = Pagination(page=page, total=total,
+                            css_framework='bootstrap5')
+    return render_template('temp.html',
+                           users=users,
+                           page=page,
+                          
+                           pagination=pagination,
+                           )
+
+
+
+
+@app.route('/nodata')
+
+def nodata():
+  
+    return render_template('noproduct.html')
+
+
+@app.route('/nodataloc')
+def nolocdata():
+    return render_template('noloction.html')
+
+@app.route('/nomove')
+def nomove():
+    return render_template('nomovinid.html')
 
 
 
@@ -104,6 +153,7 @@ def add():
                 
             con.commit()
             con.close()
+           
             print("insert data sucesfully")
 
         else:
@@ -153,6 +203,7 @@ def addloc():
             con.commit()
             con.close()
             print("insert data sucesfully")
+            
 
         else:
             print("not value product1")
@@ -210,6 +261,7 @@ def addpro():
             con.commit()
             con.close()
             print("insert data sucesfully")
+           
         else:
             print("not value product1")
             return redirect('nodata')

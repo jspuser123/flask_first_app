@@ -99,6 +99,10 @@ body
     
   }
 
+  table, th, td {  
+    
+    border-collapse: collapse;  
+  }  
 
 .markline
 {
@@ -132,20 +136,51 @@ input
 }
 
 
-@media screen and (max-width: 300px) {
+
+@media screen and (max-width: 400px) {
   span.psw {
     display: block;
     float: none;
   }
   body {
     background-color: rgb(128, 0, 70);
+
+
+
+
+
+  }
+
+      
+  .container
+
+  {
+    
+    height: 200px;
+    width: 250px;
+    background-color: #4112e9;
+    padding: 16px;
+    margin-left: 10%;
+    margin-top: 10%;
+    
+    position: relative;
+
+  }
+
+
+  .con
+
+  {
+
+    height: 200px;
+    width: 300px;
+    background-color: #4112e9;
+    padding: 10px;
+    margin-left: 5%;
+    margin-top: 10%;
+    position: relative;
+
   }
 
  
-}
-
-*:disabled {
-  background-color: dimgrey;
-  color: linen;
-  opacity: 1;
 }
