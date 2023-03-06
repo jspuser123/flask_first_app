@@ -2,9 +2,9 @@ $(document).ready(function(){
 
     $("#btn3").click(function(){
 		$("p").toggle();
-	  });
-
-
+	
+    });
+    
 
 
       var dialog = document.getElementById('myFirstDialog');    
@@ -15,7 +15,9 @@ $(document).ready(function(){
           dialog.close();    
       };  
 
+ 
 
 
+ 
 
 });

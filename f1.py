@@ -161,7 +161,7 @@ def add():
             return redirect('nomove')
             
   
-    return render_template('add.html')
+    return redirect('viewdata')
 @app.route('/locatin')
 def loc():
     con = sqlite3.connect('main.db')
@@ -210,7 +210,7 @@ def addloc():
             return redirect('nodataloc')
         
 
-    return render_template('addloc.html')
+    return redirect('/locatin')
 
 
 
@@ -267,7 +267,7 @@ def addpro():
             return redirect('nodata')
 
 
-    return render_template('addpro.html')
+    return redirect('product')
 
 
 @app.route('/<int:id>/editable/', methods = ['POST', 'GET'])
