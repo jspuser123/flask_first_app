@@ -48,10 +48,23 @@
     </div>    
   
       
-  </dialog>  
-
-
+  </dialog> 
   
+  
+    {% for message in get_flashed_messages() %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    
+      
+      {{ message }}
+ 
+     
+      <a href="/locatin" class="btn-close"aria-label="Close"></a>
+   
+
+    </div>
+    {% endfor %}
+    
 
 
 
