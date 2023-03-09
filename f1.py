@@ -3,11 +3,13 @@ import sqlite3
 
 from flask_paginate import Pagination, get_page_parameter,get_page_args
 
+from flask_ngrok import run_with_ngrok
+
 app = Flask(__name__)
 
 app.secret_key = 'super secret key'
 
-
+run_with_ngrok(app)
 
 
 
@@ -85,20 +87,6 @@ def temp():
 
 
 
-@app.route('/nodata')
-
-def nodata():
-  
-    return render_template('noproduct.html')
-
-
-@app.route('/nodataloc')
-def nolocdata():
-    return render_template('noloction.html')
-
-@app.route('/nomove')
-def nomove():
-    return render_template('nomovinid.html')
 
 
 
@@ -156,9 +144,10 @@ def add():
            
             print("insert data sucesfully")
 
+            flash("Successfull  Prodect Add")
         else:
-            print("not value product1")
-            return redirect('nomove')
+           
+            flash("No move prodect add")
             
   
     return redirect('viewdata')
@@ -203,11 +192,13 @@ def addloc():
             con.commit()
             con.close()
             print("insert data sucesfully")
+            flash("Successfull  Location Add")
             
 
         else:
-            print("not value product1")
-            return redirect('nodataloc')
+           
+            flash("Location Not Successfull ADD")
+           
         
 
     return redirect('/locatin')
@@ -261,10 +252,11 @@ def addpro():
             con.commit()
             con.close()
             print("insert data sucesfully")
+            flash("Successfull  Product Add")
            
         else:
             print("not value product1")
-            return redirect('nodata')
+            flash("Successfull  Product Add")
 
 
     return redirect('product')
@@ -371,7 +363,7 @@ def locupdate():
 
 
 
-@app.route('/<int:x>/proedit/', methods = ['POST', 'GET'])
+@app.route('/proedit/<int:x>/', methods = ['POST', 'GET'])
 def proedit(x):
     con = sqlite3.connect('main.db')
     cur = con.cursor()

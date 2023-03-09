@@ -50,7 +50,24 @@
     </div>    
   
       
-  </dialog>  
+  </dialog>
+  
+  
+
+
+
+    {% for message in get_flashed_messages()%}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    
+      
+      {{ message }}
+      
+      <a href="/product" class="btn-close"aria-label="Close"></a>
+    </div>
+    {% endfor %}
+ 
+
 
 
 
@@ -77,9 +94,11 @@
 
        
         <td>
-            <form action="{{ url_for('proedit',x=u1[0]) }}" method='post'><button  type="submit" value="edit" class="btn1"> edit</button></form>
+           
 
-  
+            <a href="/proedit/{{u1[0]}}/" class="btn1"></a>
+
+            <a href="/viewdata" class="btn-close"aria-label="Close"></a>
 
           </td>
           

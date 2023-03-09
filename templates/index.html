@@ -68,6 +68,16 @@
 
 
 
+  {% for message in get_flashed_messages()%}
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  
+    
+    {{ message }}
+    
+    <a href="/viewdata" class="btn-close"aria-label="Close"></a>
+  </div>
+  {% endfor %}
 
   <h1><mark class="markline">ESS</mark>DEE Website</h1>
 
@@ -110,8 +120,8 @@
           <form action="{{ url_for('editable', id=user[0]) }}" method='post'><button  type="submit" value="edit" class="btn1"> edit</button></form>
           </td>
           
-         
           
+         
          
         </tr>
         
