@@ -54,7 +54,43 @@
   
   
 
+  <dialog id="secDialog"  >  
+   
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 
+        <div class="modal-content">
+          <div class="modal-body">
+            <form action="/locprotable" method="post">
+    
+              <div class="mb-3 row">
+              <label  class="col-form-label" >product_id</label>
+              <input type="text" placeholder="product_id" name="product_id" id="product_id" value="{{user[0]}}" class="form-control" readonly="readonly">
+              </div>
+              <div class="mb-3 row">
+              <label class="col-form-label" >product_item</label>
+              <input type="text" placeholder="product" name="produc" id="produc" value="{{user[1]}}" class="form-control">
+              </div>
+              <div class="mb-3 row">
+            
+              <button  type="submit"   class="btn btn-danger" >Add Product</button>
+           
+              </div>
+            </form> 
+
+
+          </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="hide1" >Close</button>
+          
+        </div>
+
+      </div>  
+
+    </div>    
+  
+      
+  </dialog>
 
     {% for message in get_flashed_messages()%}
 
@@ -96,9 +132,9 @@
         <td>
            
 
-            <a href="/proedit/{{u1[0]}}/" class="btn1"></a>
+            <a href="/proedit/{{u1[0]}}/" class="btn btn-primary btn-sm active"  role="button" aria-pressed="true" id="edit1"></a>
 
-            <a href="/viewdata" class="btn-close"aria-label="Close"></a>
+        
 
           </td>
           
@@ -119,5 +155,10 @@
   </table>
 
 {% endblock %}
+
+<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>

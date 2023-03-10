@@ -1,11 +1,9 @@
 $(document).ready(function(){
+    $('#data').DataTable();
 
-    $("#btn3").click(function(){
-		$("p").toggle();
-	
-    });
+   
     
-
+ 
 
       var dialog = document.getElementById('myFirstDialog');    
       document.getElementById('show').onclick = function() {    
@@ -16,8 +14,13 @@ $(document).ready(function(){
       };  
 
  
+      var dialog = document.getElementById('secDialog');    
+      document.getElementById('edit1').onclick = function() {    
+          dialog.show();    
+      }; 
 
-
- 
+      document.getElementById('hide1').onclick = function() {    
+        dialog.close();    
+    }; 
 
 });

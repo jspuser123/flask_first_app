@@ -1,20 +1,10 @@
 from flask import Flask, render_template,redirect,request,flash
 import sqlite3
 
-from flask_paginate import Pagination, get_page_parameter,get_page_args
-
-from flask_ngrok import run_with_ngrok
 
 app = Flask(__name__)
 
 app.secret_key = 'super secret key'
-
-run_with_ngrok(app)
-
-
-
-
-
 
 
 
@@ -46,51 +36,6 @@ def homepage():
 
 
 
-@app.route('/temp1')
-def temp():
-
-    search = False
-    q = request.args.get('q')
-    if q:
-        search = True
-    
-   
-    
-                                          
-    
-
-    con = sqlite3.connect('main.db')
-    cur = con.cursor()
-
-    #tbl= """insert TABLE  ProductMovement(​movement_id,date,from_location,​to_location,product_id, ​qty);"""
-    tbl="select * from Location"
-
-    cur.execute(tbl)
-    users =cur.fetchall()
-
-
-    
-        
-    con.commit()
-    con.close()
-    total = len(users)
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, total=total,
-                            css_framework='bootstrap5')
-    return render_template('temp.html',
-                           users=users,
-                           page=page,
-                          
-                           pagination=pagination,
-                           )
-
-
-
-
-
-
-
-
 @app.route('/viewdata')
 def view():
 
@@ -109,10 +54,9 @@ def view():
     con.close()
   
    
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, total=50, record_name='users')
+   
 
-    return render_template('index.html',pagination=pagination,x=x)
+    return render_template('index.html',x=x)
 
 
 @app.route('/addtable', methods = ['POST', 'GET'])
@@ -167,10 +111,11 @@ def loc():
         
     con.commit()
     con.close()
-    page = request.args.get(get_page_parameter(), type=int, default=1)
-    pagination = Pagination(page=page, total=50, record_name='users')
 
-    return render_template('loction.html' ,pagination=pagination,x=x)
+
+   
+
+    return render_template('loction.html',x=x)
 
 @app.route('/locaddtable', methods = ['POST', 'GET'])
 def addloc():
@@ -381,8 +326,8 @@ def proedit(x):
     con.close()
 
   
-    
-    return render_template('proedit.html' ,user=user)
+   # return redirect ("/product")
+    return render_template('product.html',user=user)
 
 @app.route("/proupdate",methods=["POST","GET"])
 def proupdate():
@@ -407,4 +352,4 @@ def proupdate():
         con.close()
         print("insert data sucesfully")
 
-    return redirect ("/product")
+    return redirect('product')
