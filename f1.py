@@ -36,6 +36,21 @@ def homepage():
 
 
 
+
+@app.route('/temp')
+def temp():
+
+    return render_template('temp.html')
+
+
+
+
+
+
+
+
+
+
 @app.route('/viewdata')
 def view():
 
@@ -90,7 +105,7 @@ def add():
 
             flash("Successfull  Prodect Add")
         else:
-           
+            #print(x2,x3,x4,x5,x6,x7)
             flash("No move prodect add")
             
   
@@ -171,6 +186,7 @@ def product():
     con.close()
   
     return render_template('product.html',x1=x1)
+
 
 @app.route('/locprotable', methods = ['POST', 'GET'])
 def addpro():
@@ -307,27 +323,6 @@ def locupdate():
     return redirect ("/locatin")
 
 
-
-@app.route('/proedit/<int:x>/', methods = ['POST', 'GET'])
-def proedit(x):
-    con = sqlite3.connect('main.db')
-    cur = con.cursor()
-
- 
-    #tbl= """insert TABLE  ProductMovement(​movement_id,date,from_location,​to_location,product_id, ​qty);"""
-    tbl="select * from product where product_id =?"
-
-    cur.execute(tbl,str(x))
-    for user in cur:
-        print(user)
-    
-        
-    con.commit()
-    con.close()
-
-  
-   # return redirect ("/product")
-    return render_template('product.html',user=user)
 
 @app.route("/proupdate",methods=["POST","GET"])
 def proupdate():
