@@ -34,6 +34,62 @@ color: #d012e9;
 
   }
 
+  .chartcon
+
+  {
+    float: left;
+    height:400px;
+    width: 400px;
+    background-color: #e2d5e6;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+
+  }
+  .chartcon1
+
+  {
+    float: left;
+    height: 400px;
+    width: 400px;
+    background-color: #e9d8eb;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+
+  }
+  .chartcon2
+
+  {
+    float: left;
+    height: 400px;
+    width: 400px;
+    background-color: #f1e8f1;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+
+  }
+  .chartcon3
+
+  {
+    float: left;
+    height: 400px;
+    width: 400px;
+    background-color: #f1e8f1;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+
+  }
+
+
+
+
 body
 {
   background-color: #5d12e9;

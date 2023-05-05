@@ -1,4 +1,5 @@
 from flask import Flask, render_template,redirect,request,flash
+# from flask_restx import Resource, Api
 import sqlite3
 
 
@@ -6,6 +7,7 @@ app = Flask(__name__)
 
 app.secret_key = 'super secret key'
 
+# api = Api(app)
 
 
 
@@ -21,6 +23,9 @@ def homepage():
         elif request.form.get('action3') == 'VALUE3':
 
             return redirect('product')
+        elif request.form.get('action4') == 'VALUE4':
+
+            return redirect('chart')
     
         
         
@@ -44,8 +49,13 @@ def temp():
 
 
 
-
-
+# @api.route('/chart')
+# class DemoAPI(Resource):
+#     # def get(self):
+#     #     return {"message": "This is a message from RESTX"}
+@app.route('/chart')
+def chart():
+    return render_template('chart.html')
 
 
 
